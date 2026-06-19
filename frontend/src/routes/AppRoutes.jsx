@@ -1,29 +1,37 @@
-import React from 'react'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import Home from '../pages/Home'
-import Admin from '../pages/Admin'
-import Dashboard from '../pages/Dashboard'
-import Login from '../pages/Login'
-import Profile from '../pages/Profile'
-import Register from '../pages/Register'
-import Transaction from '../pages/Transaction'
-import Transfer from '../pages/Transfer'
+import { createBrowserRouter } from "react-router-dom";
 
-function AppRoutes() {
-    return (
-        <BrowserRouter>
-            <Routes>
-                <Route path='/' element={<Home/>}></Route>
-                <Route path='/login' element={<Login/>}></Route>
-                <Route path='/register' element={<Register/>}></Route>
-                <Route path='/dashboard' element={<Dashboard/>}></Route>
-                <Route path='/transfer' element={<Transfer/>}></Route>
-                <Route path='/transaction' element={<Transaction/>}></Route>
-                <Route path='/profile' element={<Profile/>}></Route>
-                <Route path='/admin' element={<Admin/>}></Route>
-            </Routes>
-        </BrowserRouter>
-    )
-}
+import Home from "../pages/Home";
+import AboutUs from "../pages/AboutUs";
+import Features from "../pages/Features";
+import HowItWorks from "../pages/HowItWorks";
+import Login from "../pages/Login";
+import Register from "../pages/Register";
+import Dashboard from "../pages/Dashboard";
+import Transfer from "../pages/Transfer";
+import Transaction from "../pages/Transaction";
+import Profile from "../pages/Profile";
+import Admin from "../pages/Admin";
 
-export default AppRoutes
+import MainLayout from "../layout/MainLayout";
+
+const AppRoutes = createBrowserRouter([
+    {
+        path: "/",
+        element: <MainLayout />,
+        children: [
+        { index: true, element: <Home /> },
+        { path: "/about", element: <AboutUs /> },
+        { path: "/features", element: <Features /> },
+        { path: "/how-it-works", element: <HowItWorks /> },
+        { path: "/login", element: <Login /> },
+        { path: "/register", element: <Register /> },
+        { path: "/dashboard", element: <Dashboard /> },
+        { path: "/transfer", element: <Transfer /> },
+        { path: "/transaction", element: <Transaction /> },
+        { path: "/profile", element: <Profile /> },
+        { path: "/admin", element: <Admin /> },
+        ],
+    },
+]);
+
+export default AppRoutes;
