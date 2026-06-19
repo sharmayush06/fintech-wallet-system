@@ -1,11 +1,9 @@
-import React from 'react'
-
 function Home() {
-    return (
-        <div>
-            <h1>Home</h1>
-        </div>
-    )
+  return (
+    <h1 className="text-5xl font-bold text-red-500">
+      Tailwind Test
+    </h1>
+  );
 }
 
-export default Home
+export default Home;
