@@ -3,8 +3,8 @@ function AboutUs() {
         <main className="min-h-screen bg-slate-50 py-12 px-4 sm:px-6 lg:px-8">
             <div className="mx-auto max-w-6xl">
                 <section className="rounded-3xl bg-white p-8 shadow-lg shadow-slate-200/70">
-                    <div className="grid gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
-                        <div>
+                    <div className="grid gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-start">
+                        <div className=''>
                             <p className="text-sm font-semibold uppercase tracking-[0.3em] text-sky-600">
                                 About SwiftPay
                             </p>
