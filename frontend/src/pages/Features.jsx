@@ -57,7 +57,7 @@ function Features() {
                             </div>
                         </div>
                         <div className="rounded-3xl bg-slate-50 p-6 sm:p-8">
-                            <div className="rounded-3xl bg-gradient-to-br from-sky-600 to-cyan-500 p-6 text-white shadow-xl shadow-sky-500/20">
+                            <div className="rounded-3xl bg-linear-to-br from-sky-600 to-cyan-500 p-6 text-white shadow-xl shadow-sky-500/20">
                                 <p className="text-sm uppercase tracking-[0.2em] text-sky-100/90">
                                     Why SwiftPay?
                                 </p>
