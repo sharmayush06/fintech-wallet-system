@@ -10,14 +10,14 @@ function Navbar() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex h-16 items-center justify-between gap-4 md:gap-8">
                     <div className="flex items-center gap-3">
-                        <div className="p-2 rounded-lg bg-linear-to-br from-sky-400 to-sky-600 shadow-md">
+                        <div className="p-2 rounded-lg bg-blue-600 shadow-md">
                             <Banknote className="h-6 w-12 text-white" strokeWidth={2} />
                         </div>
                         <NavLink
                             to='/'
-                            className="font-bold text-xl text-sky-600 hover:text-sky-700 transition-colors"
+                            className="font-bold text-xl text-blue-600 hover:text-blue-700 transition-colors"
                         >
-                            SwiftPay
+                            PayWallet
                         </NavLink>
                     </div>
 
@@ -28,8 +28,8 @@ function Navbar() {
                                 className={({ isActive }) =>
                                     `px-3 py-2 rounded-md text-sm font-medium transition-colors ${
                                         isActive
-                                            ? 'text-sky-600 bg-sky-50'
-                                            : 'text-slate-600 hover:text-sky-600 hover:bg-sky-50'
+                                            ? 'text-blue-600 bg-blue-50'
+                                            : 'text-slate-600 hover:text-blue-600 hover:bg-blue-50'
                                     }`
                                 }
                             >
@@ -40,8 +40,8 @@ function Navbar() {
                                 className={({ isActive }) =>
                                     `px-3 py-2 rounded-md text-sm font-medium transition-colors ${
                                         isActive
-                                            ? 'text-sky-600 bg-sky-50'
-                                            : 'text-slate-600 hover:text-sky-600 hover:bg-sky-50'
+                                            ? 'text-blue-600 bg-blue-50'
+                                            : 'text-slate-600 hover:text-blue-600 hover:bg-blue-50'
                                     }`
                                 }
                             >
@@ -52,8 +52,8 @@ function Navbar() {
                                 className={({ isActive }) =>
                                     `px-3 py-2 rounded-md text-sm font-medium transition-colors ${
                                         isActive
-                                            ? 'text-sky-600 bg-sky-50'
-                                            : 'text-slate-600 hover:text-sky-600 hover:bg-sky-50'
+                                            ? 'text-blue-600 bg-blue-50'
+                                            : 'text-slate-600 hover:text-blue-600 hover:bg-blue-50'
                                     }`
                                 }
                             >
@@ -64,8 +64,8 @@ function Navbar() {
                                 className={({ isActive }) =>
                                     `px-3 py-2 rounded-md text-sm font-medium transition-colors ${
                                         isActive
-                                            ? 'text-sky-600 bg-sky-50'
-                                            : 'text-slate-600 hover:text-sky-600 hover:bg-sky-50'
+                                            ? 'text-blue-600 bg-blue-50'
+                                            : 'text-slate-600 hover:text-blue-600 hover:bg-blue-50'
                                     }`
                                 }
                             >
@@ -78,8 +78,8 @@ function Navbar() {
                                 className={({ isActive }) =>
                                     `px-4 py-2 rounded-md text-sm font-medium transition-colors ${
                                         isActive
-                                            ? 'text-sky-600 bg-sky-50'
-                                            : 'text-slate-600 hover:text-sky-600 hover:bg-sky-50'
+                                            ? 'text-blue-600 bg-blue-50'
+                                            : 'text-slate-600 hover:text-blue-600 hover:bg-blue-50'
                                     }`
                                 }
                             >
@@ -87,9 +87,9 @@ function Navbar() {
                             </NavLink>
                             <NavLink
                                 to='/register'
-                                className="px-4 py-2 rounded-md bg-sky-600 text-sm font-semibold text-white transition hover:bg-sky-700"
+                                className="px-4 py-2 rounded-md bg-blue-600 text-sm font-semibold text-white transition hover:bg-blue-700"
                             >
-                                Register
+                                Get Started
                             </NavLink>
                         </div>
                     </div>
@@ -113,7 +113,7 @@ function Navbar() {
                                 className={({ isActive }) =>
                                     `block rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
                                         isActive
-                                            ? 'bg-sky-50 text-sky-600'
+                                            ? 'bg-blue-50 text-blue-600'
                                             : 'text-slate-700 hover:bg-slate-50 hover:text-slate-900'
                                     }`
                                 }
@@ -126,7 +126,7 @@ function Navbar() {
                                 className={({ isActive }) =>
                                     `block rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
                                         isActive
-                                            ? 'bg-sky-50 text-sky-600'
+                                            ? 'bg-blue-50 text-blue-600'
                                             : 'text-slate-700 hover:bg-slate-50 hover:text-slate-900'
                                     }`
                                 }
@@ -139,7 +139,7 @@ function Navbar() {
                                 className={({ isActive }) =>
                                     `block rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
                                         isActive
-                                            ? 'bg-sky-50 text-sky-600'
+                                            ? 'bg-blue-50 text-blue-600'
                                             : 'text-slate-700 hover:bg-slate-50 hover:text-slate-900'
                                     }`
                                 }
@@ -152,7 +152,7 @@ function Navbar() {
                                 className={({ isActive }) =>
                                     `block rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
                                         isActive
-                                            ? 'bg-sky-50 text-sky-600'
+                                            ? 'bg-blue-50 text-blue-600'
                                             : 'text-slate-700 hover:bg-slate-50 hover:text-slate-900'
                                     }`
                                 }
