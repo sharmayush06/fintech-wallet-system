@@ -1,8 +1,12 @@
-import  { useState } from 'react'
+import { useState } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
+import { useAuth } from '../store/AuthStore'
 
 function Login() {
-    const [email, setEmail] = useState('')
+    const email = useAuth((state) => state.email)
+    const setEmail = useAuth((state) => state.setEmail)
+    const setUser = useAuth((state) => state.setUser)
+    const setUserName = useAuth((state) => state.setUserName)
     const [password, setPassword] = useState('')
     const [showPassword, setShowPassword] = useState(false)
     const [error, setError] = useState('')
@@ -19,6 +23,10 @@ function Login() {
                 setError('Please fill in all fields')
                 return
             }
+
+            setUser({ email })
+            setUserName(email.split('@')[0])
+
             setTimeout(() => {
                 navigate('/dashboard')
             }, 500)

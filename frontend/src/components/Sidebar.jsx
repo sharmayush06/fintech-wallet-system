@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { 
     LayoutDashboard, 
     Wallet, 
@@ -11,9 +11,17 @@ import {
     X,
     Banknote
 } from 'lucide-react'
+import { useAuth } from '../store/AuthStore'
 
 function Sidebar({ sidebarOpen, setSidebarOpen }) {
+    const logout = useAuth((state) => state.logout)
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+    const navigate = useNavigate()
+
+    const handleLogout = () => {
+        logout()
+        navigate('/login')
+    }
 
     const toggleSidebar = () => {
         setSidebarOpen(!sidebarOpen)
@@ -66,7 +74,10 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
 
                 {/* Bottom Section */}
                 <div className="absolute bottom-0 left-0 right-0 border-t border-slate-700 p-4">
-                    <button className={`flex items-center gap-3 w-full px-4 py-3 rounded-lg text-slate-300 hover:bg-red-600 hover:text-white transition-colors ${!sidebarOpen && 'justify-center'}`}>
+                    <button
+                        onClick={handleLogout}
+                        className={`flex items-center gap-3 w-full px-4 py-3 rounded-lg text-slate-300 hover:bg-red-600 hover:text-white transition-colors ${!sidebarOpen && 'justify-center'}`}
+                    >
                         <LogOut size={20} />
                         {sidebarOpen && <span className="text-sm font-medium">Logout</span>}
                     </button>
@@ -77,7 +88,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
             {/* Mobile Toggle Button */}
             <button
                 onClick={toggleMobileMenu}
-                className="md:hidden fixed left-4 top-4 z-50 p-3 fixed rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition-colors"
+                className="md:hidden left-4 top-4 z-50 p-3 fixed rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition-colors"
             >
                 {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -127,7 +138,10 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
 
                 {/* Bottom Section */}
                 <div className="absolute bottom-0 left-0 right-0 border-t border-slate-700 p-4">
-                    <button className="flex items-center gap-3 w-full px-4 py-3 rounded-lg text-slate-300 hover:bg-red-600 hover:text-white transition-colors">
+                    <button
+                        onClick={handleLogout}
+                        className="flex items-center gap-3 w-full px-4 py-3 rounded-lg text-slate-300 hover:bg-red-600 hover:text-white transition-colors"
+                    >
                         <LogOut size={20} />
                         <span className="text-sm font-medium">Logout</span>
                     </button>
