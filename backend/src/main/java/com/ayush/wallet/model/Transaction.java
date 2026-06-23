@@ -24,6 +24,7 @@ public class Transaction {
     @ManyToOne
     @JoinColumn(name = "destination_wallet_id")
     private Wallet destinationWallet;
+
     private BigDecimal amount;
     private String status;
     private LocalDateTime createdAt;
