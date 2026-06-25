@@ -1,12 +1,14 @@
 import React, { useState } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
+import { registerUser } from '../services/authService'
 
 function Register() {
     const [formData, setFormData] = useState({
-        fullName: '',
+        name: '',
         email: '',
         password: '',
         confirmPassword: '',
+        phone: '',
     })
     const [showPassword, setShowPassword] = useState(false)
     const [showConfirmPassword, setShowConfirmPassword] = useState(false)
@@ -43,9 +45,9 @@ function Register() {
         setIsLoading(true)
 
         try {
-            const { fullName, email, password, confirmPassword } = formData
+            const { name, email, password, confirmPassword, phone } = formData
 
-            if (!fullName || !email || !password || !confirmPassword) {
+            if (!name || !email || !password || !confirmPassword || !phone) {
                 setError('Please fill in all fields')
                 return
             }
@@ -60,11 +62,16 @@ function Register() {
                 return
             }
 
-            setTimeout(() => {
-                navigate('/login')
-            }, 500)
+            await registerUser({
+                name,
+                email,
+                password,
+                phone: Number(phone),
+            })
+
+            navigate('/login')
         } catch (err) {
-            setError(err.message || 'Registration failed. Please try again.')
+            setError(err.response?.data?.message || err.message || 'Registration failed. Please try again.')
         } finally {
             setIsLoading(false)
         }
@@ -116,10 +123,10 @@ function Register() {
                                 Full Name
                             </label>
                             <input
-                                id="fullName"
+                                id="name"
                                 type="text"
-                                name="fullName"
-                                value={formData.fullName}
+                                name="name"
+                                value={formData.name}
                                 onChange={handleChange}
                                 placeholder="John Doe"
                                 className="w-full px-4 py-2.5 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all"
@@ -138,6 +145,22 @@ function Register() {
                                 value={formData.email}
                                 onChange={handleChange}
                                 placeholder="you@example.com"
+                                className="w-full px-4 py-2.5 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all"
+                            />
+                        </div>
+
+                        {/* Phone Field */}
+                        <div>
+                            <label htmlFor="phone" className="block text-sm font-medium text-slate-700 mb-2">
+                                Phone Number
+                            </label>
+                            <input
+                                id="phone"
+                                type="tel"
+                                name="phone"
+                                value={formData.phone}
+                                onChange={handleChange}
+                                placeholder="9876543210"
                                 className="w-full px-4 py-2.5 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all"
                             />
                         </div>

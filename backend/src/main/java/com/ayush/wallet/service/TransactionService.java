@@ -1,17 +1,18 @@
 package com.ayush.wallet.service;
 
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.ayush.wallet.dto.TransactionRequest;
 import com.ayush.wallet.dto.TransferRequest;
 import com.ayush.wallet.model.Transaction;
 import com.ayush.wallet.model.Wallet;
 import com.ayush.wallet.repository.TransactionRepository;
 import com.ayush.wallet.repository.WalletRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import java.math.BigDecimal;
-import java.time.LocalDateTime;
-import java.util.List;
 
 @Service
 public class TransactionService {
@@ -24,10 +25,10 @@ public class TransactionService {
 
     public String transfer(TransferRequest request) {
 
-        Wallet sender = walletRepository.findById(request.getSourceUserId())
+        Wallet sender = walletRepository.findByUserId(request.getSourceUserId())
                 .orElseThrow(() -> new RuntimeException("Sender wallet not found"));
 
-        Wallet receiver = walletRepository.findById(request.getDestinationUserId())
+        Wallet receiver = walletRepository.findByUserId(request.getDestinationUserId())
                 .orElseThrow(() -> new RuntimeException("Receiver wallet not found"));
 
         if(sender.getBalance() < request.getAmount()){
@@ -52,9 +53,11 @@ public class TransactionService {
         return "Transfer Successful";
     }
 
-    public List<Transaction> history(TransactionRequest walletId) {
+    public List<Transaction> history(TransactionRequest request) {
+        Wallet wallet = walletRepository.findByUserId(request.getUserId())
+                .orElseThrow(() -> new RuntimeException("Wallet not found"));
 
         return transactionRepository
-                .findBySourceWalletIdOrDestinationWalletId(walletId.getUserId(), walletId.getUserId());
+                .findBySourceWalletIdOrDestinationWalletId(wallet.getId(), wallet.getId());
     }
 }

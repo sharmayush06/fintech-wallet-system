@@ -2,10 +2,8 @@ import { useState } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { 
     LayoutDashboard, 
-    Wallet, 
     Send, 
     History,
-    Settings,
     LogOut,
     Menu,
     X,
@@ -33,10 +31,8 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
 
     const menuItems = [
         { icon: <LayoutDashboard size={20} />, label: 'Dashboard', path: '/dashboard' },
-        { icon: <Wallet size={20} />, label: 'Wallet', path: '/wallet' },
         { icon: <Send size={20} />, label: 'Transfer Money', path: '/transfer' },
         { icon: <History size={20} />, label: 'Transactions', path: '/transaction' },
-        { icon: <Settings size={20} />, label: 'Settings', path: '/settings' },
     ]
 
     return (

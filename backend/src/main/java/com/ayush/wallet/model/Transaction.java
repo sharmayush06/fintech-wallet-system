@@ -1,5 +1,6 @@
 package com.ayush.wallet.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,10 +20,12 @@ public class Transaction {
     private Long id;
     @ManyToOne
     @JoinColumn(name = "source_wallet_id")
+    @JsonIgnore
     private Wallet sourceWallet;
 
     @ManyToOne
     @JoinColumn(name = "destination_wallet_id")
+    @JsonIgnore
     private Wallet destinationWallet;
 
     private BigDecimal amount;

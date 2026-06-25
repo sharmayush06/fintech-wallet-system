@@ -4,10 +4,12 @@ const useAuthStore = create((set) => ({
     user: null,
     userName: '',
     email: '',
-    setUser: (user) => set({ user }),
+    authToken: null,
+    setUser: (user) => set({ user, userName: user?.name || '', email: user?.email || '' }),
     setUserName: (userName) => set({ userName }),
     setEmail: (email) => set({ email }),
-    logout: () => set({ user: null, userName: '', email: '' }),
+    setAuthToken: (authToken) => set({ authToken }),
+    logout: () => set({ user: null, userName: '', email: '', authToken: null }),
 }));
 
 const useAuth = (selector) => useAuthStore(selector);

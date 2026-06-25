@@ -1,12 +1,14 @@
 import { useState } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { useAuth } from '../store/AuthStore'
+import { loginUser } from '../services/authService'
 
 function Login() {
     const email = useAuth((state) => state.email)
     const setEmail = useAuth((state) => state.setEmail)
     const setUser = useAuth((state) => state.setUser)
     const setUserName = useAuth((state) => state.setUserName)
+    const setAuthToken = useAuth((state) => state.setAuthToken)
     const [password, setPassword] = useState('')
     const [showPassword, setShowPassword] = useState(false)
     const [error, setError] = useState('')
@@ -24,14 +26,13 @@ function Login() {
                 return
             }
 
-            setUser({ email })
-            setUserName(email.split('@')[0])
-
-            setTimeout(() => {
-                navigate('/dashboard')
-            }, 500)
+            const response = await loginUser({ email, password })
+            setUser(response)
+            setUserName(response.name || email.split('@')[0])
+            setAuthToken('demo-token')
+            navigate('/dashboard')
         } catch (err) {
-            setError(err.message || 'Login failed. Please try again.')
+            setError(err.response?.data?.message || err.message || 'Login failed. Please try again.')
         } finally {
             setIsLoading(false)
         }
