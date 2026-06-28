@@ -6,7 +6,7 @@ function AboutUs() {
                     <div className="grid gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-start">
                         <div className=''>
                             <p className="text-sm font-semibold uppercase tracking-[0.3em] text-sky-600">
-                                About SwiftPay
+                                About PayWallet
                             </p>
                             <h1 className="mt-4 text-4xl font-semibold tracking-tight text-slate-900 sm:text-5xl">
                                 Building a smarter wallet experience for every user.
